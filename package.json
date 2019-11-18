@@ -1,0 +1,38 @@
+{
+  "name": "custom-notifications-ios",
+  "version": "1.0.0",
+  "description": "custom apple push notifications",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && npm run watch",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "pm2-dev start dist/server.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"cyan.bold, green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
+    "debug": "npm run build && npm run watch-debug",
+    "server-debug": "nodemon --inspect dist/server.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "keywords": [
+    "express",
+    "typescript"
+  ],
+  "author": "thehash",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "nodemon": "^1.19.2",
+    "typescript": "^3.6.3"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.1",
+    "@types/http-errors": "^1.6.2"
+  }
+}
