@@ -4,17 +4,17 @@
   "description": "custom apple push notifications",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && npm run watch",
     "build": "npm run build-ts && npm run tslint",
     "serve": "pm2-dev start dist/server.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "test": "jest --forceExit",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
-    "watch-node": "nodemon dist/server.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"cyan.bold, green.bold\" \"npm run watch-ts\" \"npm run serve\"",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "copy-static-assets": "node copyStaticAssets.js",
     "debug": "npm run build && npm run watch-debug",
-    "server-debug": "nodemon --inspect dist/server.js",
+    "serve-debug": "nodemon --inspect dist/server.js",
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "keywords": [
