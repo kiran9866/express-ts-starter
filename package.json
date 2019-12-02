@@ -1,7 +1,7 @@
 {
-  "name": "custom-notifications-ios",
+  "name": "express-typescript-starter",
   "version": "1.0.0",
-  "description": "custom apple push notifications",
+  "description": "",
   "main": "dist/server.js",
   "scripts": {
     "start": "npm run build && npm run watch",
